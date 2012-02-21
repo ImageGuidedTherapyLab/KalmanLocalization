@@ -1,0 +1,13 @@
+
+instructions
+
+(1) mkdir kalmanNoROI                   (make work directory) 
+(2) dakota dakota_kalman_noroi.in       (setup dakota)
+(3) cd kalmanNoROI; qsub  kalman.1.qsub (submit jobs)
+                    qsub  kalman.2.qsub 
+                    qsub  kalman.3.qsub 
+                          .
+                          .
+                          .
+(4) showq / qstat                       (monitor jobs)
+

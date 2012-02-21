@@ -1,0 +1,22 @@
+#!/bin/bash
+# simple wrapper 
+num=$(echo $1 | awk -F. '{print $NF}')
+qsubfile=kalman.$num.qsub
+echo setting up $num from work dir $PWD
+echo "#!/bin/bash"                                                                     >  $qsubfile
+echo "#$ -pe mpich 8"                                                                  >> $qsubfile
+echo "#$ -q  normal"                                                                   >> $qsubfile
+echo "#$ -N kalman.$num"                                                               >> $qsubfile
+echo "#$ -j y"                                                                         >> $qsubfile
+echo "#$ -o \$JOB_NAME.log\$JOB_ID"                                                      >> $qsubfile
+echo "#$ -cwd "                      >> $qsubfile
+echo "#$ -V"                                                                           >> $qsubfile
+echo "python $PWD/kalmanFilter.py" $1 $2 >> $qsubfile
+echo 0.0 > $2
+#qsub $qsubfile
+# sleep until file available
+#while [ ! -e "$2" ]
+#do
+#  echo waiting for $2 
+#  sleep 5
+#done
