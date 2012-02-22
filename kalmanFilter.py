@@ -113,8 +113,10 @@ def KalmanFilterMRTI(**kwargs):
   getpot.SetIniValue( "probe/domain" , "2" ) 
   
   # root directory of data
+  # FIXME Josh update with your data directory
   workDir = "/share/work/fuentes/data/biotex/090318_751642_treat/"
   workDir = "/data/fuentes/biotex/090318_751642_treat/"
+  workDir = "/work/00131/jyung/data/biotex/KalmanLocalization/"
   dataRoot = "%s/Processed/s1%02d%03d" % ( workDir, kwargs['cv']['uniform'] , kwargs['cv']['roi'] )
   tmapRoot = "%s/Processed/s1%02d%03d" % ( workDir,          0              ,          0          )
 

@@ -2,12 +2,13 @@
 instructions
 
 (1) mkdir kalmanNoROI                   (make work directory) 
-(2) dakota dakota_kalman_noroi.in       (setup dakota)
-(3) cd kalmanNoROI; qsub  kalman.1.qsub (submit jobs)
+(2) update full path of analysis driver in dakota_kalman_noroi.in 
+(3) dakota dakota_kalman_noroi.in       (setup dakota)
+(4) cd kalmanNoROI; qsub  kalman.1.qsub (submit jobs)
                     qsub  kalman.2.qsub 
                     qsub  kalman.3.qsub 
                           .
                           .
                           .
-(4) showq / qstat                       (monitor jobs)
+(5) showq / qstat                       (monitor jobs)
 
