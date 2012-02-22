@@ -117,6 +117,8 @@ def KalmanFilterMRTI(**kwargs):
   workDir = "/share/work/fuentes/data/biotex/090318_751642_treat/"
   workDir = "/data/fuentes/biotex/090318_751642_treat/"
   workDir = "/work/00131/jyung/data/biotex/KalmanLocalization/"
+  workDir = "/work/00131/fuentes/data/biotex/090318_751642_treat/"
+
   dataRoot = "%s/Processed/s1%02d%03d" % ( workDir, kwargs['cv']['uniform'] , kwargs['cv']['roi'] )
   tmapRoot = "%s/Processed/s1%02d%03d" % ( workDir,          0              ,          0          )
 
@@ -176,8 +178,8 @@ def KalmanFilterMRTI(**kwargs):
   Translation =     [matrix.GetElement(0,3),matrix.GetElement(1,3),matrix.GetElement(2,3)] 
   # set intial mesh
   #femMesh.SetupUnStructuredGrid( "%s/meshTemplate1.e" % workDir ,0,RotationMatrix, Translation  ) 
-  femMesh.SetupUnStructuredGrid( "%s/meshTemplate2.NoAppBoundary.e" % workDir ,0,RotationMatrix, Translation  ) 
-  #femMesh.SetupUnStructuredGrid( "%s/meshTemplate2.WithAppBoundary.e" % workDir ,0,RotationMatrix, Translation  ) 
+  femMesh.SetupUnStructuredGrid( "%s/meshTemplate2.NoAppBoundary.e" % ".." ,0,RotationMatrix, Translation  ) 
+  #femMesh.SetupUnStructuredGrid( "%s/meshTemplate2.WithAppBoundary.e" % ".." ,0,RotationMatrix, Translation  ) 
   #femMesh.SetupStructuredGrid( (60,60,2), 
   #                             [.0216,.0825],[.0432,.104],[-.001,.001],[2,2,2,2,3,2]) 
   #femMesh.ReadFile("magnitudeROI.e")

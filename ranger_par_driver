@@ -15,7 +15,7 @@ echo "#$ -cwd "                                                                 
 echo "#$ -V"                                                                    >> $qsubfile
 echo "set -x # Echo commands, use set echo with csh"                            >> $qsubfile
 echo "echo \$PE_HOSTFILE |xargs cat"                                             >> $qsubfile
-echo "ibrun -n 1 -o 0 python $PWD/kalmanFilter.py" $1 $2 >> $qsubfile
+echo "ibrun -n 1 -o 0 python $PWD/../kalmanFilter.py" $1 $2 >> $qsubfile
 echo 0.0 > $2
 #qsub $qsubfile
 # sleep until file available
