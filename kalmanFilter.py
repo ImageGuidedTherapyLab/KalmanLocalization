@@ -240,20 +240,22 @@ def KalmanFilterMRTI(**kwargs):
   #numMeasurement = kalmanFilter.CreateMeasurementMapFromImaging("MRTIMean", 8 )
   #numMeasurement = kalmanFilter.CreateMeasurementMapFromImaging("ROISystem", 8 )
 
-  # create identity map if needed 
-  #numMeasurement = kalmanFilter.CreateIdentityMeasurementMap( 9 )
-
-  # initialize petsc data structures
-  numMeasurement = size_roi[0]* size_roi[1]* size_roi[2] 
-  kalmanFilter.Setup( numMeasurement )
-   
-  MeasurementMapNodeSet = 9
   MeasurementMapNodeSet = 7
   MeasurementMapNodeSet = 8
-  #kalmanFilter.CreateROINodeSetMeasurementMap( MeasurementMapNodeSet )
-  MeasurementMapNodeSet = 5 # use node set ID as the averaging number
-  kalmanFilter.CreateROIAverageMeasurementMap(image_roi, MeasurementMapNodeSet , 
-                                              [origin[0], origin[1], 0.0469], spacing )
+  FEMMeshIsImagingMesh = False
+  if ( FEMMeshIsImagingMesh ):
+    # create identity map if needed 
+    MeasurementMapNodeSet = 9
+    numMeasurement = kalmanFilter.CreateIdentityMeasurementMap( MeasurementMapNodeSet )
+    kalmanFilter.Setup( numMeasurement )
+    kalmanFilter.CreateROINodeSetMeasurementMap( MeasurementMapNodeSet )
+  else : # default is unstructured FEM Mesh
+    # initialize petsc data structures
+    MeasurementMapNodeSet = 5 # use node set ID as the averaging number
+    numMeasurement = size_roi[0]* size_roi[1]* size_roi[2] 
+    kalmanFilter.Setup( numMeasurement )
+    kalmanFilter.CreateROIAverageMeasurementMap(image_roi, MeasurementMapNodeSet , 
+                                                [origin[0], origin[1], 0.0469], spacing )
 
   # get covariance diagonal and and covariance entries for plotting
   for column in CovCol:
