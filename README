@@ -11,4 +11,5 @@ instructions
                           .
                           .
 (5) showq / qstat                       (monitor jobs)
-
+(6) python rms.py  ( extract rms data into *.dat files )
+(7) plot in matlab
